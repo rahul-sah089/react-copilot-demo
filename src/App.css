@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.referrals-button {
+  border: 1.5px solid lightgray;
+  border-radius: 0; 
+  background-color: white;
+  font-size: 16px; /* Adjust the font size as needed */
+  padding: 5px 15px; /* Adjust the padding as needed */
+  margin-left: 70%; /* Adjust the margin as needed */
+  color: black;
+  margin-top: 10px; /* Add top margin as needed */
+  margin-bottom: 10px; /* Add bottom margin as needed */
+}

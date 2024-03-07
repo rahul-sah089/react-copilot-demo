@@ -4,6 +4,7 @@ import './App.css';
 import { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from './components/Header';
+import DataTable from './components/Table';
 
 
 function App() {
@@ -20,13 +21,17 @@ function App() {
 
   return (
     <div className="App">
-      <Header/>
+      <Header />
+
       <section className="referrals-section">
         <button className="referrals-button">View Referrals</button>
       </section>
+
       <section className="dashboard-section">
+
+        <DataTable data={data} />
         {/* Display the fetched data here */}
-        {data.map(item => (
+        {/* {data.map(item => (
           <div key={item.id}>
             <p>Auth Request No: {item.authRequestNo}</p>
             <p>Status: {item.status}</p>
@@ -35,8 +40,9 @@ function App() {
             <p>Auth Type: {item.authType}</p>
             <p>Created Date: {item.createdDate}</p>
           </div>
-        ))}
+        ))} */}
       </section>
+
     </div>
   );
 }
