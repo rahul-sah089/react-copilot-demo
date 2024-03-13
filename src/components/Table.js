@@ -19,18 +19,30 @@ const DataTable = ({ data }) => {
   return (
 
     <div className="datatable-container">
+
       <Card
-        title={<div style={{ textAlign: 'left', backgroundColor: 'rgb(248,248,248)' }}>Your Authorization Requests from the October 1, 2022 - December 1, 2022 </div>}
+        title={<div className='auth-table-text'>Your Authorization Requests from the October 1, 2022 - December 1, 2022 </div>}
         bordered={true}
+        className='ant-card-bordered'
         style={{
           textAlign: 'center',
-          backgroundColor: 'rgb(248,248,248)',
+          fontSize: '18px',
+          // background: '#f0f2f5',
           alignContent: 'center',
           width: '80%',
           margin: '0 auto', // Add this line to center align the card
         }}
       >
-        <Table dataSource={data} columns={columns} />
+
+        <Table cellFontSizeMD className='navbar-username' dataSource={data} columns={columns}
+          pagination={{
+            defaultPageSize: 5,
+            hideOnSinglePage: false,
+            showSizeChanger: true,
+            showQuickJumper: true,
+            showTotal: total => `Count ${total}`,
+          }}
+        />
       </Card>
     </div>
   );
