@@ -1,28 +1,35 @@
 // react component for the form to add a new authorization request to the table of requests in the app
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Input, Button, DatePicker, Select, Row, Col, Radio, Alert } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import { PlusOutlined, RightOutlined } from '@ant-design/icons';
 import { Collapse } from 'react-collapse';
 import Paragraph from 'antd/es/typography/Paragraph';
 
-const FormComponent = ({ handleFormSubmit }) => {
+const FormComponent = ({ formData, setFormData, submitAuth }) => {
     const [form] = Form.useForm();
     const [formLayout, setFormLayout] = useState('vertical');
-    const [formValues, setFormValues] = useState({});
+    const [formValues, setFormValues] = useState({
+        authRequestType: 'medical', medicalHealthAuthType: 'outpatient', status: 'Pending', authType: 'Regular'
+    });
 
     const onFormLayoutChange = ({ layout }) => {
         setFormLayout(layout);
     };
 
     const onFormSubmit = () => {
-        handleFormSubmit(formValues);
+        setFormData(formValues);
         form.resetFields();
     };
 
     const onFormChange = (changedValues, allValues) => {
         setFormValues(allValues);
     };
+
+    useEffect(() => {
+        form.setFieldsValue(formValues);
+        setFormData(formValues);
+    }, [formValues]);
 
     return (
         <div className='App btn-secondary'>
@@ -32,7 +39,7 @@ const FormComponent = ({ handleFormSubmit }) => {
             <Form
                 form={form}
                 layout={formLayout}
-                initialValues={{ layout: formLayout }}
+                initialValues={{ layout: formLayout, authRequestType: 'medical', medicalHealthAuthType: 'outpatient', status: 'Pending', authType: 'Regular'}}
                 colon={false}
                 onValuesChange={onFormChange}
                 onFinish={onFormSubmit}
@@ -43,7 +50,7 @@ const FormComponent = ({ handleFormSubmit }) => {
                 rules={[{ required: true, message: 'Please enter an authorization request type' }]}
                 >
                     <Radio.Group
-                    defaultValue={formValues.authRequestType}
+                    // defaultValue={formValues.authRequestType}
                     buttonStyle='solid'
                     onChange={e => setFormValues({ ...formValues, authRequestType: e.target.value })}
                     >
@@ -64,9 +71,9 @@ const FormComponent = ({ handleFormSubmit }) => {
                 rules={[{ required: true, message: 'Please enter an authorization request type' }]}
                 >
                     <Radio.Group
-                    defaultValue={formValues.authRequestType}
+                    // defaultValue={formValues.authRequestType}
                     buttonStyle='solid'
-                    onChange={e => setFormValues({ ...formValues, authRequestType: e.target.value })}
+                    onChange={e => setFormValues({ ...formValues, medicalHealthAuthType: e.target.value })}
                     >
                         <Radio.Button value="outpatient">Outpatient</Radio.Button>
                         <Radio.Button value="dmeopp">DME/OP</Radio.Button>
@@ -88,32 +95,43 @@ const FormComponent = ({ handleFormSubmit }) => {
                 name="status"
                 rules={[{ required: true, message: 'Please select a status' }]}
                 >
-                    <Select>
+                    <Select
+                    onChange={value => setFormValues({ ...formValues, status: value })}
+                    >
                         <Select.Option value="Pending">Pending</Select.Option>
                         <Select.Option value="Approved">Approved</Select.Option>
                         <Select.Option value="Denied">Denied</Select.Option>
                     </Select>
                 </Form.Item>
                 <Form.Item label="Patient" name="patient">
-                    <Input />
+                    <Input
+                    onChange={e => setFormValues({ ...formValues, patient: e.target.value })}
+                    />
                 </Form.Item>
                 <Form.Item label="Service" name="service">
-                    <Input />
+                    <Input 
+                    onChange={e => setFormValues({ ...formValues, service: e.target.value })}
+                    />
                 </Form.Item>
                 <Form.Item label="Auth Type" name="authType">
-                    <Select>
+                    <Select
+                    onChange={value => setFormValues({ ...formValues, authType: value })}
+                    >
                         <Select.Option value="Regular">Regular</Select.Option>
                         <Select.Option value="Urgent">Urgent</Select.Option>
                     </Select>
                 </Form.Item>
-                <Form.Item label="Created Date" name="createdDate">
-                    <DatePicker />
-                </Form.Item>
-                <Form.Item label="Add Authorization Request">
+                {/* <Form.Item label="Created Date" name="createdDate">
+                    <DatePicker
+                    onChange={(date, dateStr) => setFormValues({ ...formValues, createdDate: dateStr })}
+                    />
+                </Form.Item> */}
+                {/* <Form.Item label="Add Authorization Request">
                     <Button type="primary" htmlType="submit" icon={<PlusOutlined />}>
                         Add
                     </Button>
-                </Form.Item>
+                </Form.Item> */}
+                <Button type="primary" size='large' htmlType='submit' icon={<RightOutlined />} onClick={submitAuth}>Submit</Button>
             </Form>
             </Col>
             </Row>

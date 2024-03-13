@@ -7,7 +7,7 @@ import { Content } from 'antd/es/layout/layout';
 
 const mainLayout = { sm: { span: 24, offset: 0 }, md: { span: 22, offset: 1 }, xl: { span: 20, offset: 2 } };
 const contentStyle = {
-  height: '100vh',
+  // height: '100vh',
   color: '#000',
   lineHeight: '160px',
   textAlign: 'center',
@@ -25,6 +25,21 @@ const FormMainStepper = ({ handleFormSubmit }) => {
   }
   const next = () => {
     setCurrent(current + 1);
+  }
+
+  const [formData, setFormData] = useState({
+    authRequestType: 'medical', medicalHealthAuthType: 'outpatient', status: 'Pending', authType: 'Regular'
+  });
+  const submitAuth = () => {
+    console.log("mainn=>" ,formData);
+    fetch('http://localhost:3002/api/submitAuth', {
+      method: 'post',
+      headers: {'Content-Type':'application/json'},
+      body: formData
+     })
+      .then(response => response.json())
+      .then(data => alert(data.message))
+      .catch(error => console.log(error));
   }
 
   return (<>
@@ -59,7 +74,7 @@ const FormMainStepper = ({ handleFormSubmit }) => {
             <Carousel >
               <div className='steps-content'>
                 <h3 style={contentStyle}>
-                  <FormComponent handleFormSubmit={handleFormSubmit} />
+                  <FormComponent formData={formData} setFormData={setFormData} submitAuth={submitAuth} />
                 </h3>
               </div>
               <div className='steps-content'>
@@ -74,7 +89,7 @@ const FormMainStepper = ({ handleFormSubmit }) => {
             </Carousel>
             {/* <Button type="primary" onClick={prev}>Previous</Button>
             <Button type="primary" onClick={next}>Next</Button> */}
-            <Button type="primary" size='large' htmlType='submit' icon={<RightOutlined />} onClick={next}>Submit</Button>
+            
               </Col>
             </Row>
           </Col>
