@@ -74,3 +74,41 @@
   border-color: #a71930;
   color: #eee;
 }
+
+.header-class {
+  /* padding-left: 50px; */
+  /* padding-right: 50px; */
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+}
+.navbar-username{
+  /* font-weight: bold ; */
+  font-size: 16px;
+}
+
+.breadcrumb-priorauth-text{
+  font-size: 16px;
+  color: black;
+}
+
+.button-border {
+  border-radius: 2px
+}
+
+.auth-table-text{
+  font-size: 16px;
+  color: black;
+  text-align: left
+}
+
+.ant-card-bordered{
+  border: 1px solid #f0f0f0;
+  border-radius: 2px;
+  /* box-shadow: 0 2px 8px rgba(0,0,0,0.09); */
+}
