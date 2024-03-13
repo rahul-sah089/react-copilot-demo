@@ -56,3 +56,21 @@
   justify-content: flex-end;
   width: 100%;
 }
+
+.steps-content{
+  margin-top: 16px;
+  min-height: 200px;
+  padding-top: 18px;
+}
+
+.btn-secondary .ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+  background: #00759A;
+  border-color: #00759A;
+  color: #fff;
+}
+
+.ant-btn-primary {
+  background-color: #a71930;
+  border-color: #a71930;
+  color: #eee;
+}

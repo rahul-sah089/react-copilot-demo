@@ -3,7 +3,7 @@ import './App.css';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Dashboard from './components/Dashboard';
-import FormComponent from './components/Form';
+import FormMainStepper from './components/FormMainStepper';
 
 function App() {
 
@@ -12,7 +12,7 @@ function App() {
     <BrowserRouter>
     <Routes>
       <Route path="/" element={<Dashboard />} />
-      <Route path="/form" element={<FormComponent />} />
+      <Route path="/form" element={<FormMainStepper />} />
     </Routes>
   </BrowserRouter>
   )
