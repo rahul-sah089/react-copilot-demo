@@ -91,6 +91,11 @@ app.get('/api/data', (req, res) => {
   res.json(data);
 });
 
+app.post('/api/submitAuth', (req, res) => {
+  console.log("req=>",req);
+  res.json({ message: 'Authorization request submitted successfully' });
+});
+
 app.listen(3002, () => {
   console.log('Dummy API server is running on port 3002');
 });
