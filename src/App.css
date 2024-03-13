@@ -36,3 +36,41 @@
     transform: rotate(360deg);
   }
 }
+
+.referrals-button, .auth-request-button {
+  border: 1.5px solid lightgray;
+  border-radius: 0; 
+  background-color: white;
+  font-size: 16px; /* Adjust the font size as needed */
+  padding: 5px 15px; /* Adjust the padding as needed */
+  margin-right: 5%; /* Adjust the margin as needed */
+  color: black;
+  margin-top: 10px; /* Add top margin as needed */
+  margin-bottom: 10px; /* Add bottom margin as needed */
+}
+
+.App-nav-sections {
+  display: flex;
+  flex-direction: row;
+    /*move the buttons to the right  */
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.steps-content{
+  margin-top: 16px;
+  min-height: 200px;
+  padding-top: 18px;
+}
+
+.btn-secondary .ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled) {
+  background: #00759A;
+  border-color: #00759A;
+  color: #fff;
+}
+
+.ant-btn-primary {
+  background-color: #a71930;
+  border-color: #a71930;
+  color: #eee;
+}
